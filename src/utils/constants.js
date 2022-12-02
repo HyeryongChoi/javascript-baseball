@@ -3,6 +3,13 @@ const OUTPUT_MESSAGE = Object.freeze({
   newLine: '\n',
 });
 
+const RANDOM_NUMBER = Object.freeze({
+  min: 1,
+  max: 9,
+  size: 3,
+});
+
 module.exports = {
   OUTPUT_MESSAGE,
+  RANDOM_NUMBER,
 };
