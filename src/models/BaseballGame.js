@@ -1,15 +1,13 @@
 const { makeRandomNumbers } = require('./RandomNumbersMaker');
 const { RANDOM_NUMBER } = require('../utils/constants');
+const Player = require('./Player');
 
 class BaseballGame {
-  #computer;
+  #computer = makeRandomNumbers(RANDOM_NUMBER.size);
+  #player = new Player();
 
-  constructor() {
-    this.createComputer(RANDOM_NUMBER.size);
-  }
-
-  createComputer(size) {
-    this.#computer = makeRandomNumbers(size);
+  renewPlayer(input) {
+    this.#player.renew(input);
   }
 }
 module.exports = BaseballGame;
