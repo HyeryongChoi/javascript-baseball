@@ -13,8 +13,13 @@ const RANDOM_NUMBER = Object.freeze({
   size: 3,
 });
 
+const ERROR_MESSAGE = Object.freeze({
+  invalidInput: `[ERROR] ${RANDOM_NUMBER.min}~${RANDOM_NUMBER.max}까지 서로 다른 임의의 수 ${RANDOM_NUMBER.size}개를 입력해야 합니다.`,
+});
+
 module.exports = {
   INPUT_MESSAGE,
   OUTPUT_MESSAGE,
   RANDOM_NUMBER,
+  ERROR_MESSAGE,
 };
