@@ -13,6 +13,11 @@ const OutputView = {
   printGameFinish() {
     Console.print(OUTPUT_MESSAGE.gameFinish);
   },
+
+  printRealGameFinish() {
+    Console.print(OUTPUT_MESSAGE.gameRealFinish);
+    Console.close();
+  },
 };
 
 module.exports = OutputView;
