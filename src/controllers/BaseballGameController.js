@@ -1,13 +1,22 @@
 const BaseballGame = require('../models/BaseballGame');
-const { GAME_RESULT } = require('../utils/constants');
-const { printGameStart, printCurrent, printGameFinish } = require('../views/OutputView');
-const { readPlayerNumbers } = require('../views/InputView');
+const { GAME, GAME_RESULT, ERROR_MESSAGE } = require('../utils/constants');
+const {
+  printGameStart,
+  printCurrent,
+  printGameFinish,
+  printRealGameFinish,
+} = require('../views/OutputView');
+const { readPlayerNumbers, readRetryOrFinish } = require('../views/InputView');
 
 class BaseballGameController {
   #baseballGame;
 
   playGame() {
     printGameStart();
+    this.retryGame();
+  }
+
+  retryGame() {
     this.#baseballGame = new BaseballGame();
     readPlayerNumbers(this.onReadPlayerNumbers.bind(this));
   }
@@ -26,6 +35,15 @@ class BaseballGameController {
 
   finishGame() {
     printGameFinish();
+    readRetryOrFinish(this.onReadRetryOrFinish.bind(this));
+  }
+
+  onReadRetryOrFinish(input) {
+    if (input === GAME.retry) this.retryGame();
+    if (input === GAME.finish) printRealGameFinish();
+    if (input !== GAME.retry && input !== GAME.finish) {
+      throw new Error(ERROR_MESSAGE.invalidRetryOrFinish);
+    }
   }
 }
 module.exports = BaseballGameController;
