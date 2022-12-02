@@ -1,5 +1,5 @@
 const BaseballGame = require('../models/BaseballGame');
-const { printGameStart } = require('../views/OutputView');
+const { printGameStart, printCurrent } = require('../views/OutputView');
 const { readPlayerNumbers } = require('../views/InputView');
 
 class BaseballGameController {
@@ -12,7 +12,8 @@ class BaseballGameController {
   }
 
   onReadPlayerNumbers(input) {
-    this.#baseballGame.renewPlayer(input);
+    const result = this.#baseballGame.renewPlayer(input);
+    printCurrent(result);
   }
 }
 module.exports = BaseballGameController;
