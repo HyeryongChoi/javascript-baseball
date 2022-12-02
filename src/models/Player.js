@@ -19,6 +19,18 @@ class Player {
     }
     return false;
   }
+
+  getScore(computer) {
+    const score = { strike: 0, ball: 0 };
+    for (let i = 0; i < this.#numbers.length; i++) {
+      if (computer[i] === parseInt(this.#numbers[i])) {
+        score.strike += 1;
+        continue;
+      }
+      if (computer.includes(parseInt(this.#numbers[i]))) score.ball += 1;
+    }
+    return Object.freeze(score);
+  }
 }
 
 module.exports = Player;

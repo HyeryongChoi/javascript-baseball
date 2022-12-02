@@ -17,9 +17,17 @@ const ERROR_MESSAGE = Object.freeze({
   invalidInput: `[ERROR] ${RANDOM_NUMBER.min}~${RANDOM_NUMBER.max}까지 서로 다른 임의의 수 ${RANDOM_NUMBER.size}개를 입력해야 합니다.`,
 });
 
+const GAME_RESULT = Object.freeze({
+  nothing: '낫싱',
+  ballOnly: (ball) => `${ball}볼`,
+  strikeOnly: (strike) => `${strike}스트라이크`,
+  ballAndStrike: (ball, strike) => `${ball}볼 ${strike}스트라이크`,
+});
+
 module.exports = {
   INPUT_MESSAGE,
   OUTPUT_MESSAGE,
   RANDOM_NUMBER,
   ERROR_MESSAGE,
+  GAME_RESULT,
 };
