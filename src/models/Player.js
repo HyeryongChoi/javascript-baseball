@@ -5,7 +5,7 @@ class Player {
   #numbers;
 
   renew(input) {
-    this.#numbers = this.makeNumbers(input);
+    this.#numbers = input;
     if (!this.validate(input)) throw new Error(ERROR_MESSAGE.invalidInput);
   }
 
@@ -18,10 +18,6 @@ class Player {
       return true;
     }
     return false;
-  }
-
-  makeNumbers(input) {
-    return parseInt(input);
   }
 }
 
