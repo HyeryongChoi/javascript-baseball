@@ -1,6 +1,6 @@
 const BaseballGame = require('../models/BaseballGame');
 const { GAME_RESULT } = require('../utils/constants');
-const { printGameStart, printCurrent } = require('../views/OutputView');
+const { printGameStart, printCurrent, printGameFinish } = require('../views/OutputView');
 const { readPlayerNumbers } = require('../views/InputView');
 
 class BaseballGameController {
@@ -20,8 +20,12 @@ class BaseballGameController {
 
   goNextStep(result) {
     return result == GAME_RESULT.threeStrike
-      ? 1
+      ? this.finishGame()
       : readPlayerNumbers(this.onReadPlayerNumbers.bind(this));
+  }
+
+  finishGame() {
+    printGameFinish();
   }
 }
 module.exports = BaseballGameController;

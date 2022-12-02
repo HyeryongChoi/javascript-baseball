@@ -9,6 +9,10 @@ const OutputView = {
   printCurrent(result) {
     Console.print(result);
   },
+
+  printGameFinish() {
+    Console.print(OUTPUT_MESSAGE.gameFinish);
+  },
 };
 
 module.exports = OutputView;
