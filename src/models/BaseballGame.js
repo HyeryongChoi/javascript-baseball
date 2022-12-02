@@ -13,6 +13,7 @@ class BaseballGame {
 
   getResult(computer) {
     const score = this.#player.getScore(computer);
+    if (score.strike === 3) return GAME_RESULT.strikeAll(score.strike);
     if (score.ball === 0 && score.strike === 0) return GAME_RESULT.nothing;
     if (score.ball > 0 && score.strike === 0) return GAME_RESULT.ballOnly(score.ball);
     if (score.ball === 0 && score.strike > 0) return GAME_RESULT.strikeOnly(score.strike);

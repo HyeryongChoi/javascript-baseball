@@ -18,10 +18,12 @@ const ERROR_MESSAGE = Object.freeze({
 });
 
 const GAME_RESULT = Object.freeze({
+  threeStrike: '3스트라이크',
   nothing: '낫싱',
   ballOnly: (ball) => `${ball}볼`,
   strikeOnly: (strike) => `${strike}스트라이크`,
   ballAndStrike: (ball, strike) => `${ball}볼 ${strike}스트라이크`,
+  strikeAll: (strike) => `${strike}스트라이크`,
 });
 
 module.exports = {
