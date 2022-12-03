@@ -22,7 +22,7 @@ class BaseballGameController {
   }
 
   onReadPlayerNumbers(input) {
-    const result = this.#baseballGame.renewPlayer(input);
+    const result = this.#baseballGame.getResult(input);
     printCurrent(result);
     this.finishOrRetry(result);
   }

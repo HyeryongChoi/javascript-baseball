@@ -6,12 +6,12 @@ class BaseballGame {
   #computer = makeRandomNumbers(RANDOM_NUMBER.size);
   #player = new Player();
 
-  renewPlayer(input) {
+  getResult(input) {
     this.#player.renew(input);
-    return this.getResult(this.#computer);
+    return this.scoreToResult(this.#computer);
   }
 
-  getResult(computer) {
+  scoreToResult(computer) {
     const score = this.#player.getScore(computer);
     if (score.strike === 3) return GAME_RESULT.strikeAll(score.strike);
     if (score.ball === 0 && score.strike === 0) return GAME_RESULT.nothing;
