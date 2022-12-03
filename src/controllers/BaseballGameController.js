@@ -4,19 +4,19 @@ const {
   printGameStart,
   printCurrent,
   printGameFinish,
-  printRealGameFinish,
+  printGameQuit,
 } = require('../views/OutputView');
-const { readPlayerNumbers, readRetryOrFinish } = require('../views/InputView');
+const { readPlayerNumbers, readRestartOrQuit } = require('../views/InputView');
 
 class BaseballGameController {
   #baseballGame;
 
   playGame() {
     printGameStart();
-    this.retryGame();
+    this.restartGame();
   }
 
-  retryGame() {
+  restartGame() {
     this.#baseballGame = new BaseballGame();
     readPlayerNumbers(this.onReadPlayerNumbers.bind(this));
   }
@@ -24,25 +24,25 @@ class BaseballGameController {
   onReadPlayerNumbers(input) {
     const result = this.#baseballGame.renewPlayer(input);
     printCurrent(result);
-    this.goNextStep(result);
+    this.finishOrRetry(result);
   }
 
-  goNextStep(result) {
-    return result == GAME_RESULT.threeStrike
+  finishOrRetry(result) {
+    return result === GAME_RESULT.threeStrike
       ? this.finishGame()
       : readPlayerNumbers(this.onReadPlayerNumbers.bind(this));
   }
 
   finishGame() {
     printGameFinish();
-    readRetryOrFinish(this.onReadRetryOrFinish.bind(this));
+    readRestartOrQuit(this.onReadRestartOrQuit.bind(this));
   }
 
-  onReadRetryOrFinish(input) {
-    if (input === GAME.retry) this.retryGame();
-    if (input === GAME.finish) printRealGameFinish();
-    if (input !== GAME.retry && input !== GAME.finish) {
-      throw new Error(ERROR_MESSAGE.invalidRetryOrFinish);
+  onReadRestartOrQuit(input) {
+    if (input === GAME.restart) this.restartGame();
+    if (input === GAME.quit) printGameQuit();
+    if (input !== GAME.restart && input !== GAME.quit) {
+      throw new Error(ERROR_MESSAGE.invalidCommand);
     }
   }
 }

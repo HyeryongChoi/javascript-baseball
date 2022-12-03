@@ -6,8 +6,8 @@ const InputView = {
     Console.readLine(INPUT_MESSAGE.enterNumbers, callback);
   },
 
-  readRetryOrFinish(callback) {
-    Console.readLine(INPUT_MESSAGE.enterRetryOrFinish, callback);
+  readRestartOrQuit(callback) {
+    Console.readLine(INPUT_MESSAGE.enterRestartOrQuit, callback);
   },
 };
 

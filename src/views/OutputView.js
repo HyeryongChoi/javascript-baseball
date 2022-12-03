@@ -14,8 +14,8 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.gameFinish);
   },
 
-  printRealGameFinish() {
-    Console.print(OUTPUT_MESSAGE.gameRealFinish);
+  printGameQuit() {
+    Console.print(OUTPUT_MESSAGE.gameQuit);
     Console.close();
   },
 };
