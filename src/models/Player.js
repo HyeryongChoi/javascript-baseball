@@ -10,7 +10,7 @@ class Player {
   }
 
   makeNumbers(input) {
-    return [...input].map((str) => parseInt(str));
+    return [...input].map(Number);
   }
 
   validate(input) {
